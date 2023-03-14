@@ -4,7 +4,7 @@ import express from "express";
 import { getStudents, getStudent, getFilteredStudent, addStudent, editStudent, deleteStudent } from "../controller/StudentsController.js";
 import { getStudentsFees, getStudentFees, addStudentsFees, editInstallment, deleteInstallment } from "../controller/StudentFeesController.js";
 import { addStudentsTest, getStudentsTest, getStudentTest, editStudentTest, deleteTest, getFilteredTests } from "../controller/StudentTestController.js";
-import { getStandards, addStandard, addSection, getSections } from "../controller/MoreController.js";
+import { getStandards, addStandard, addSection, getSections, getDistinctSections, getDistinctStandards } from "../controller/MoreController.js";
 
 // middleware
 import { storage,upload } from "../middleware/StudentMiddleware.js";
@@ -50,5 +50,8 @@ route.post('/more/addstandard', addStandard);
 
 route.get('/more/getsections', getSections);
 route.post('/more/addsection', addSection);
+
+route.get('/more/getdistinctstandards', getDistinctStandards);
+route.get('/more/getdistinctsections', getDistinctSections);
 
 export default route;
