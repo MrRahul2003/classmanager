@@ -16,7 +16,7 @@ route.post('/student/getstudent', getStudent); // single student based on id
 route.get('/student/getstudents', getStudents); // all students
 route.post('/student/getfilteredstudent', getFilteredStudent);// multiple students based on section and division
 route.post('/student/addstudent',upload.single(["profile"]), addStudent);
-route.post('/student/editstudent', editStudent);
+route.post('/student/editstudent',upload.single(["profile"]), editStudent);
 route.post('/student/deletestudent', deleteStudent);
 
 // attendence

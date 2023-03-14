@@ -6,7 +6,7 @@ const addStudent = async (req, res) => {
   try {
     console.log("addstudent", req.body, req.file);
 
-    const profile = (req.file === undefined) ? "" : req.file.filename;
+    const profile = req.file === undefined ? "" : req.file.filename;
     console.log(profile);
 
     const data = {
@@ -19,6 +19,8 @@ const addStudent = async (req, res) => {
       standard: req.body.standard,
       section: req.body.section,
       phone: req.body.phone,
+      startyear: req.body.startyear,
+      endyear: req.body.endyear,
     };
 
     const newStudent = new Student(data);
@@ -67,12 +69,30 @@ const getFilteredStudent = async (req, res) => {
 
 const editStudent = async (req, res) => {
   try {
-    console.log("editStudent", req.body);
+    console.log("editStudent", req.body, req.file);
+
+    const profile = req.file === undefined ? req.body.profile : req.file.filename;
+    console.log(profile);
+
+    const data = {
+      profile: profile,
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      gender: req.body.gender,
+      dateofbirth: req.body.dateofbirth,
+      email: req.body.email,
+      standard: req.body.standard,
+      section: req.body.section,
+      phone: req.body.phone,
+      startyear: req.body.startyear,
+      endyear: req.body.endyear,
+    };
 
     const updatedStudent = await Student.findByIdAndUpdate(
       req.body._id,
-      req.body
+      data
     );
+
     console.log("Student updated", updatedStudent);
     return res.status(200).json({ message: "student updated successfully" });
   } catch (error) {

@@ -29,6 +29,12 @@ const StudentsSchema = new mongoose.Schema({
     profile: {
         type: String
     },
+    startyear: {
+        type: String
+    },
+    endyear: {
+        type: String
+    },
     entrydate: {
         type: Date,
         default: Date.now
