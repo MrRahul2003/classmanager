@@ -5,6 +5,7 @@ import { getStudents, getStudent, getFilteredStudent, addStudent, editStudent, d
 import { getStudentsFees, getStudentFees, addStudentsFees, editInstallment, deleteInstallment } from "../controller/StudentFeesController.js";
 import { addStudentsTest, getStudentsTest, getStudentTest, editStudentTest, deleteTest, getFilteredTests } from "../controller/StudentTestController.js";
 import { getStandards, addStandard, addSection, getSections, getDistinctSections, getDistinctStandards } from "../controller/MoreController.js";
+import { getAttendence, addAttendence } from "../controller/StudentAttendenceController.js";
 
 // middleware
 import { storage,upload } from "../middleware/StudentMiddleware.js";
@@ -20,10 +21,8 @@ route.post('/student/editstudent',upload.single(["profile"]), editStudent);
 route.post('/student/deletestudent', deleteStudent);
 
 // attendence
-// route.post('/attendence/getattendence', getAttendence);
-// route.post('/attendence/addattendence', addAttendence);
-// route.post('/attendence/editattendence', editAttendence);
-// route.post('/attendence/deleteattendence', deleteAttendence);
+route.get('/attendence/getattendence', getAttendence);
+route.post('/attendence/addattendence/', addAttendence);
 
 // student fees
 route.get('/studentsfees/getstudentsfees', getStudentsFees);
